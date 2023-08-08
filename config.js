@@ -28,6 +28,10 @@ export const config = {
     password: required('DB_PASSWORD'),
     // port: required('DB_PORT'),
   },
+  port: parseInt(required('HOST_PORT', 8080)),
+  cors: {
+    allowedOrigin: required('CORS_ALLOW_ORIGIN'),
+  },
   mongodb: {
     host: required('MG_DB_HOST'),
   },

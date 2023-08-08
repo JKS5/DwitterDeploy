@@ -14,13 +14,11 @@ import { connectedDB } from './database/database.js';
 const app = express();
 
 const corsOption = cors({
-  origin: ['*'],
+  origin: config.cors.allowedOrigin,
   optionsSuccessStatus: 200,
-  credentials: true,
-  maxAge: 3000,
 });
 // t
-app.use(cors());
+app.use(cors(corsOption));
 app.use(cookieParser());
 app.use(morgan('tiny'));
 app.use(helmet());
@@ -41,7 +39,8 @@ app.use((error, req, res, next) => {
 
 connectedDB()
   .then(() => {
-    const server = app.listen(config.host.port);
+    console.log(`Server is started...${new Date()}`);
+    const server = app.listen(config.port);
     initSocket(server);
   })
   .catch(console.error());
