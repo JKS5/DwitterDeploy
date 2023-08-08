@@ -40,7 +40,7 @@ app.use((error, req, res, next) => {
 connectedDB()
   .then(() => {
     console.log(`Server is started...${new Date()}`);
-    const server = app.listen(config.port);
+    const server = app.listen(8080);
     initSocket(server);
   })
   .catch(console.error());
