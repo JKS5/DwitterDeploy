@@ -13,10 +13,10 @@ import { connectedDB } from './database/database.js';
 
 const app = express();
 
-const corsOption = cors({
+const corsOption = {
   origin: config.cors.allowedOrigin,
   optionsSuccessStatus: 200,
-});
+};
 // t
 app.use(cors(corsOption));
 app.use(cookieParser());

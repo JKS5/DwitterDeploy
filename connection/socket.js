@@ -9,7 +9,7 @@ import { config } from '../config.js';
 class Socket {
   constructor(server) {
     this.io = new Server(server, {
-      cors: config.cors.allowedOrigin,
+      cors: { origin: config.cors.allowedOrigin },
     });
 
     this.io.use((Socket, next) => {
